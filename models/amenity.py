@@ -4,9 +4,10 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 
 
-class Amenity(BaseModel, Base):
+class Amenity(BaseModel):
     __tablename__ = 'Amenity'
-    name = Column(String)
+    #name = Column(String)
+    name = ""
 
     def __init__(self, *args, **kwargs):
         """Initialises Amenity"""

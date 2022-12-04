@@ -7,7 +7,8 @@ from sqlalchemy import Column, String
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'State'
-    name = Column(String)
+    #name = Column(String)
+    name = ""
 
     def __init__(self, *args, **kwargs):
         """Initialises Amenity"""
