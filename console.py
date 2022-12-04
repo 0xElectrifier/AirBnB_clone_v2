@@ -116,9 +116,19 @@ class HBNBCommand(cmd.Cmd):
 
     @staticmethod
     def kv_parser(param):
+        key_value = None
         if list(filter(None, re.split("\w+=\"\w+\"", param))):
             return (None)  # Check if the parameter was formatted correctly
-        key_value = tuple(filter(None, re.split("[=\"]", param)))
+        key_value = list(filter(None, re.split("[=\"]", param)))
+        key = key_value[0]
+        value = key_value[1]
+        if '.' in key_value[1]:
+            key_value[1] = float(value)
+        else:
+            try:
+                key_value[1] = int(value)
+            except Exception:
+                key_value[1] = str(value).replace(" ", "_")
 
         return (key_value)
 
@@ -135,11 +145,11 @@ class HBNBCommand(cmd.Cmd):
         for param in args[1:]:
             ret = self.kv_parser(param)
             if ret is not None:
-               new_instance = HBNBCommand.classes[args[0]](*ret)
-
-            storage.save()
-            print(new_instance.id)
+                params[ret[0]] = ret[1]
+        
+        new_instance = HBNBCommand.classes[args[0]](**params)
         storage.save()
+        print(new_instance.id)
 
     def help_create(self):
         """ Help information for the create method """
