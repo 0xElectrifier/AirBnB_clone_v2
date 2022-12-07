@@ -27,7 +27,6 @@ class BaseModel:
                     except Exception:
                         pass
                 else:
-                    print(key)
                     setattr(self, key, value)
 
             if 'created_at' not in kwargs.keys():

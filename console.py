@@ -117,7 +117,8 @@ class HBNBCommand(cmd.Cmd):
     @staticmethod
     def kv_parser(param):
         key_value = None
-        if list(filter(None, re.split("\w+=\"\w+\"", param))):
+        if (re.search("\w+=\"\w+\"", param) and
+           list(filter(None, re.split("\w+=\"\w+\"", param)))):
             return (None)  # Check if the parameter was formatted correctly
         key_value = list(filter(None, re.split("[=\"]", param)))
         key = key_value[0]
@@ -128,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
             try:
                 key_value[1] = int(value)
             except Exception:
-                key_value[1] = str(value).replace(" ", "_")
+                key_value[1] = str(value).replace("_", " ")
 
         return (key_value)
 
