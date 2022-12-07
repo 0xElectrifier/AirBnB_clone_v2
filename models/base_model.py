@@ -19,20 +19,21 @@ class BaseModel:
         else:
             from models import storage
             for key, value in kwargs.items():
-                if key == '__class__':
-                    continue
-                if key == 'created_at' or key == 'updated_at':
-                    try:
-                        setattr(self, key, datetime.fromisoformat(value))
-                    except Exception:
-                        pass
-                else:
+                if key != '__class__':
                     setattr(self, key, value)
 
-            if 'created_at' not in kwargs.keys():
+            if kwargs.get('created_at') and type(self.created_at) is str:
+                setattr(self, 'created_at',
+                        datetime.fromisoformat(self.created_at))
+            else:
                 setattr(self, 'created_at', datetime.now())
-            if 'updated_at' not in kwargs.keys():
+
+            if kwargs.get('updated_at') and type(self.updated_at) is str:
+                setattr(self, 'updated_at',
+                        datetime.fromisoformat(self.updated_at))
+            else:
                 setattr(self, 'updated_at', datetime.now())
+
             if 'id' not in kwargs.keys():
                 setattr(self, 'id', str(uuid.uuid4()))
 

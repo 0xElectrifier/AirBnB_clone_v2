@@ -149,7 +149,7 @@ class HBNBCommand(cmd.Cmd):
                 params[ret[0]] = ret[1]
 
         new_instance = HBNBCommand.classes[args[0]](**params)
-        storage.save()
+        new_instance.save()
         print(new_instance.id)
 
     def help_create(self):
