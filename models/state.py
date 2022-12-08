@@ -4,11 +4,12 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 
 
-class State(BaseModel):
+class State(BaseModel, Base):
     """ State class """
-    __tablename__ = 'State'
-    #name = Column(String)
-    name = ""
+    __tablename__ = 'states'
+    name = Column(String(128),
+                  nullable=False)
+    # name = ""
 
     def __init__(self, *args, **kwargs):
         """Initialises Amenity"""
