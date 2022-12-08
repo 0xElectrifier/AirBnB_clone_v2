@@ -4,6 +4,7 @@ import uuid
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DATETIME
 from datetime import datetime
+from models import HBNB_TYPE_STORAGE
 
 
 Base = declarative_base()
