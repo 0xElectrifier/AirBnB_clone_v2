@@ -67,16 +67,6 @@ class DBStorage:
         if obj is not None:
             self.__session.add(obj)
 
-        """
-        try:
-            self.__session.add(obj)
-            self.__session.flush()
-            self.__session.refresh(obj)
-        except Exception as e:
-            self.__session.rollback()
-            raise e
-        """
-
     def save(self):
         """Commit all changes of the current database session"""
         self.__session.commit()

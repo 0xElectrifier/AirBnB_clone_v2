@@ -72,7 +72,7 @@ class BaseModel:
         dictionary['updated_at'] = self.updated_at.isoformat()
 
         if (dictionary.get('_sa_instance_state')): # delete '_sa_instance_state' key
-            del dictionary['_sa_instance_state']   # if it exists
+            del self.__dict__['_sa_instance_state']   # if it exists
         return dictionary
 
     def delete(self):

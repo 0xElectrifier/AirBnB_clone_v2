@@ -120,11 +120,16 @@ class HBNBCommand(cmd.Cmd):
         if (re.search("\w+=\"\w+\"", param) and
            list(filter(None, re.split("\w+=\"\w+\"", param)))):
             return (None)  # Check if the parameter was formatted correctly
+        #if (re.search("\w+=\
+
         key_value = list(filter(None, re.split("[=\"]", param)))
         key = key_value[0]
         value = key_value[1]
         if '.' in key_value[1]:
-            key_value[1] = float(value)
+            try:
+                key_value[1] = float(value)
+            except:
+                key_value[1] = str(value).replace("_", " ")
         else:
             try:
                 key_value[1] = int(value)
