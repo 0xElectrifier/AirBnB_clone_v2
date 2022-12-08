@@ -15,7 +15,8 @@ class City(BaseModel, Base):
                       nullable=False)
     name = Column(String(128),
                   nullable=False)
-    #state_id = ""
+    places = relationship('Place', backref='cities')
+    #state_id = "
     #name = ""
 
     def __init__(self, *args, **kwargs):
