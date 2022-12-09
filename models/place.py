@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import Table
 
 
-if storage_type == 'db':
+if HBNB_TYPE_STORAGE == 'db':
     place_amenity = Table('place_amenity', Base.metadata,
                           Column('place_id', String(60),
                                  ForeignKey('places.id'),
@@ -26,13 +26,13 @@ class Place(BaseModel, Base):
     """ A place to stay """
     __tablename__ = "places"
     if HBNB_TYPE_STORAGE == 'db':
-        city_id = Column(String(60), nullable=False, ForeignKey('cities.id'))
-        user_id = Column(String(60), nullable=False, ForeignKey('users.id'))
+        city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
+        user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
         name = Column(String(128), nullable=False)
         description = Column(String(1024), nullable=True)
         number_rooms = Column(Integer, nullable=False, default=0)
         number_bathrooms = Column(Integer, nullable=False, default=0)
-        max_guest = Column(Integer, nullable=False, 0)
+        max_guest = Column(Integer, nullable=False, default=0)
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
@@ -54,7 +54,7 @@ class Place(BaseModel, Base):
 
         @property
         def reviews(self):
-             ''' returns list of review instances with place_id
+            ''' returns list of review instances with place_id
                 equals to the cyrrent Place.id
                 FileStorage relationship between Place and Review
             '''
@@ -80,7 +80,7 @@ class Place(BaseModel, Base):
                     lst.append(amen)
             return lst
 
-         @amenities.setter
+        @amenities.setter
         def amenities(self, obj):
             ''' method for adding an Amenity.id to the
                 attribute amenity_ids. accepts only Amenity
