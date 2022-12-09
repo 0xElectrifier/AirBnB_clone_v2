@@ -7,7 +7,13 @@ from datetime import datetime
 from models import HBNB_TYPE_STORAGE
 
 
-Base = declarative_base()
+if HBNB_TYPE_STORAGE == 'db':
+    Base = declarative_base()
+else:
+    class Base:
+        pass
+
+
 class BaseModel:
     """A base class for all hbnb models"""
 
