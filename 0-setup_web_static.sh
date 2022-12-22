@@ -5,8 +5,9 @@
 res=$(eval dpkg -s nginx | grep "Status: install ok installed*")
 if [ "$res" != "Status: install ok installed" ]
 then
-	sudo apt-get update;
-	sudo apt-get install nginx;
+	sudo apt-get -y update;
+	sudo apt-get install -y nginx;
+	sudo service nginx start;
 fi
 
 mkdir -p /data/web_static/releases/test;
