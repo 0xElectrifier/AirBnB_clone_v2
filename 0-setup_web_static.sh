@@ -3,7 +3,7 @@
 
 # Check if 'nginx' is installed. If not, install
 res=$(eval dpkg -s nginx | grep "Status: install ok installed*")
-if [ -n $res ]
+if [ "$res" != "Status: install ok installed" ]
 then
 	sudo apt-get update;
 	sudo apt-get install nginx;
@@ -35,7 +35,8 @@ echo "server {
 
 	location /hbnb_static {
 	    alias /data/web_static/current;
-}" > /etc/nginx/sites_available/default
+    }
+}" > /etc/nginx/sites-available/default
 
 # Restart nginx to reconfigure server
 service nginx restart;
