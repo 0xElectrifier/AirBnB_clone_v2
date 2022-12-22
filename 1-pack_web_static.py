@@ -20,10 +20,10 @@ def do_pack():
 
     # Create directory versions and compress web_static dir
     local('mkdir -p versions')
-    result = local("tar -cvf {} web_static".format(archive_name))
+    result = local("tar -cvzf {} web_static".format(archive_name))
 
     # Check if archiving failed
-    if (result.failed == True):
+    if (result.failed):
         return None
 
     return (archive_name)
