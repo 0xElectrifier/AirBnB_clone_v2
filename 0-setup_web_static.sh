@@ -31,7 +31,7 @@ echo "server {
 	listen [::]:80;
 
 	root /data/web_static/releases/test;
-	index.html
+	index index.html;
 
 	location /hbnb_static {
 	    alias /data/web_static/current;
