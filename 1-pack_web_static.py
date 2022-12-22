@@ -8,12 +8,22 @@ import re
 
 
 def do_pack():
-    """Fab script"""
+    """Fab script to compress directory
+
+    Return: path to created archive
+    """
+    # Get current time
     dt = datetime.isoformat(datetime.now())
     dt = re.split("[-T:.]", dt)
     archive_name = "./versions/web_static_" + dt[0] + dt[1] + dt[2]
     archive_name += dt[3] + dt[4] + dt[5] + '.tgz'
+
+    # Create directory versions and compress web_static dir
     local('mkdir -p versions')
-    local("tar -cvf {} web_static".format(archive_name))
+    result = local("tar -cvf {} web_static".format(archive_name))
+
+    # Check if archiving failed
+    if (result.failed == True):
+        return None
 
     return (archive_name)
