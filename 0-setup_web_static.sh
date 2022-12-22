@@ -2,7 +2,7 @@
 # Script that sets up your web servers for the deployment of 'web_static'
 
 # Check if 'nginx' is installed. If not, install
-res=$(eval dpkg -s nginx | grep "Status: install ok installed*")
+res=$(eval dpkg -s nginx | grep "Status: install ok installed")
 if [ "$res" != "Status: install ok installed" ]
 then
 	sudo apt-get -y update;
