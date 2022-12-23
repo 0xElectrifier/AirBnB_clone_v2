@@ -24,11 +24,10 @@ def do_deploy(archive_path):
 
         # Transfer the archive from local to remote
         put(archive_path, '/tmp/')
-        
+
         # Get the name of the file
         file = re.split("/", archive_path)[-1]
         tmp_path = ('/tmp/' + file)
-        
 
         # Get filename without the extension
         # filename = re.split(".", file)[0]
