@@ -33,7 +33,6 @@ def do_deploy(archive_path):
         # Get filename without the extension
         # filename = re.split(".", file)[0]
         filename = file[:-4]
-        local('echo {}'.format(filename))
 
         # Uncompress the archive to the remote folder
 
@@ -50,6 +49,6 @@ def do_deploy(archive_path):
         new_symlink = '/data/web_static/releases/' + filename
         run('sudo ln -s {} /data/web_static/current'.format(new_symlink))
     except Exception as e:
-        local('echo Error - {}'.format(e))
+        return False
 
     return True
