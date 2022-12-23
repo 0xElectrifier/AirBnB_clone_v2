@@ -40,6 +40,9 @@ def do_deploy(archive_path):
         run('sudo mkdir -p {}'.format(dest))
         run('sudo tar -xzf {} -C {}'.format(tmp_path, dest))
 
+        # Move extracted files in .../web_static to correct dir
+        run('sudo mv {}/web_static/* {}/'.format(dest, dest))
+
         # Delete the archive from the web server
         run('sudo rm -rf {}'.format(tmp_path))
 
