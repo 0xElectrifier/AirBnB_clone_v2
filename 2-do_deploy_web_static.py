@@ -14,7 +14,7 @@ def do_deploy(archive_path):
     """Deploys an archive to my web server
 
     Return:
-        False if the file at @archive_path doesn't exist
+        False if the file at @archive_path doesn't exist, or True on success
     """
 
     try:
