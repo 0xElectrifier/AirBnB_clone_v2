@@ -23,17 +23,16 @@ def do_clean(number=0):
 
     # Retrieve and sort files in the 'versions' directory
     local_files = sorted(listdir('versions'))
-    print("--------{}".format(local_files))
 
     # Make sure 'versions' directory if not empty
     if len(local_files) == 0:
         return
     with lcd('versions'):
-        [local_files.pop() for i in range(len(local_files)) if i < number]
+        [local_files.pop() for i in range(number)]
         [local('rm -rf ./{}'.format(tmp)) for tmp in local_files]
 
     with cd('/data/web_static/releases'):
         remote_files = run('ls -t ./').split()
         remote_files = [f for f in remote_files if 'web_static' in f]
-        [remote_files.pop(0) for i in range(len(remote_files)) if i < number]
+        [remote_files.pop(0) for i in range(number)]
         [run('sudo rm -rf ./{}'.format(tmp)) for tmp in remote_files]

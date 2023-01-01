@@ -36,6 +36,8 @@ def do_deploy(archive_path):
         # Uncompress the archive to the remote folder
 
         dest = "/data/web_static/releases/" + filename
+        aa = run('ls /')
+        print(type(aa))
         run('sudo mkdir -p {}'.format(dest))
         run('sudo tar -xzf {} -C {}'.format(tmp_path, dest))
 
