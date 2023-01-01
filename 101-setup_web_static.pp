@@ -6,7 +6,7 @@ $html = "<html>
   <body>
     Holberton School
   </body>
-</html>
+</html>"
 
 $var="server {
 	listen 80 default_server;
