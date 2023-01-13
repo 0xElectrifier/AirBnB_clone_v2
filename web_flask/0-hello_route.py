@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/', strict_slashes=False)
 def hello_world():
     """Sends output to browser"""
-    return "Hello HBNB"
+    return "Hello HBNB!"
 
 
 if __name__ == "__main__":
