@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""First flask script that starts a web application, Hello Flask"""
+"""Script that starts a Flask web application
+Extension of 0-hello_route
+"""
 from flask import Flask
 app = Flask(__name__)
 
