@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Script that starts a Flask web application
-Extension of 1-hbnb_route.py
+Extension of 2-c_route.py
 """
 from flask import Flask
 app = Flask(__name__)
@@ -21,6 +21,12 @@ def hello_hbnb():
 @app.route('/c/<string:text>', strict_slashes=False)
 def c_is_fun(text):
     return "C {}".format(text.replace('_', ' '))
+
+
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<string:text>', strict_slashes=False)
+def py_is_cool(text='is cool'):
+    return "Python {}".format(text.replace('_', ' '))
 
 
 if __name__ == "__main__":
