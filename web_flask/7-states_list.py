@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""
+"""Script that sets up a Flask web application,
+fetching the data from MySQL database
 """
 from flask import Flask, render_template
 from models import storage
