@@ -29,7 +29,6 @@ class DBStorage:
                  'Review': Review
                 }
 
-
     def __init__(self):
         """Initializes the DBStorage instance"""
         HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
@@ -79,7 +78,7 @@ class DBStorage:
     def delete(self, obj=None):
         """Deletes @obj if not 'None' from the current database session"""
         if obj is not None:
-            #self.__session.query(type(obj)).filter(type(obj).id == obj.id)
+            # self.__session.query(type(obj)).filter(type(obj).id == obj.id)
             #               .delete()
             self.__session.delete(obj)
 
