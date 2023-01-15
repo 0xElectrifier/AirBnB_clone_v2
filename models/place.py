@@ -18,7 +18,7 @@ if HBNB_TYPE_STORAGE == 'db':
                           Column('amenity_id', String(60),
                                  ForeignKey('amenities.id'),
                                  primary_key=True,
-                                 nullable=False),
+                                 nullable=False)
                           # mysql_charset = 'latin1'
                           )
 
