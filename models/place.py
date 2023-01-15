@@ -19,14 +19,14 @@ if HBNB_TYPE_STORAGE == 'db':
                                  ForeignKey('amenities.id'),
                                  primary_key=True,
                                  nullable=False),
-                          mysql_charset = 'latin1'
+                          # mysql_charset = 'latin1'
                           )
 
 
 class Place(BaseModel, Base):
     """ A place to stay """
     __tablename__ = "places"
-    __table_args__ = ({'mysql_default_charset': 'latin1'})
+    # __table_args__ = ({'mysql_default_charset': 'latin1'})
     if HBNB_TYPE_STORAGE == 'db':
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
