@@ -7,7 +7,7 @@ from sqlalchemy import Column, String
 
 class Amenity(BaseModel, Base):
     __tablename__ = 'amenities'
-    # __table_args__ = ({'mysql_default_charset': 'latin1'})
+    __table_args__ = ({'mysql_default_charset': 'latin1'})
     if HBNB_TYPE_STORAGE == 'db':
         name = Column(String(128), nullable=False)
     else:
