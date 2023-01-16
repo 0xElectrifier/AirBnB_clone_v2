@@ -28,7 +28,7 @@ class Place(BaseModel, Base):
     __tablename__ = "places"
     __table_args__ = {'mysql_default_charset': 'latin1'}
     if HBNB_TYPE_STORAGE == 'db':
-        city_id = Column(String(60), nullable=False)
+        city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
         name = Column(String(128), nullable=False)
         description = Column(String(1024), nullable=True)
